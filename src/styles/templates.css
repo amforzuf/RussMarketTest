@@ -1,0 +1,77 @@
+.templates-panel {
+  padding: 20px 16px;
+}
+.templates-panel h2 {
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0 0 10px;
+}
+.templates {
+  display: grid;
+  gap: 4px;
+}
+.template {
+  background: #f2f3f7;
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 7px;
+  position: relative;
+  border-left: 2px solid #b7c4ff;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 14px;
+}
+.template.day {
+  border-left-color: #c5a7ff;
+}
+.template.evening {
+  border-left-color: #a1e8e8;
+}
+.template small {
+  font-size: 13px;
+}
+.template kbd {
+  position: absolute;
+  right: 9px;
+  top: 8px;
+  background: #fff;
+  padding: 3px 6px;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 10px;
+}
+.templates-panel .custom-heading {
+  margin-top: 28px;
+}
+.time-fields {
+  display: flex;
+  gap: 8px;
+}
+.time-fields label {
+  font-size: 11px;
+  color: #9999a4;
+  flex: 1;
+  min-width: 0;
+}
+.time-fields input {
+  width: 100%;
+  margin-top: 6px;
+  background: #f2f3f7;
+  border-radius: 7px;
+  height: 44px;
+  padding: 10px;
+  color: #696a76;
+  font-size: 13px;
+}
+.apply {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  margin-top: 8px;
+  font-size: 12px;
+  padding-inline: 5px;
+}

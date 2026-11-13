@@ -1,0 +1,37 @@
+.shift-menu {
+  position: fixed;
+  z-index: 20;
+  background: #fff;
+  border: 1px solid #e6e7ed;
+  box-shadow: 0 8px 36px #22243b22;
+  border-radius: 12px;
+  width: 250px;
+  padding: 10px;
+  display: grid;
+  gap: 4px;
+}
+.shift-menu .template {
+  padding: 8px 12px;
+  font-size: 12px;
+  gap: 4px;
+}
+.shift-menu .template small {
+  font-size: 11px;
+}
+.menu-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  color: #868692;
+  font-size: 11px;
+  padding: 3px 2px 8px;
+}
+.delete-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #c55050;
+  padding: 10px;
+  font-size: 12px;
+}

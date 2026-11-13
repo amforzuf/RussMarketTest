@@ -1,0 +1,205 @@
+@media (min-width: 1650px) {
+  main {
+    padding-top: 30px;
+  }
+  .table-scroll {
+    max-height: calc(100vh - 340px);
+  }
+  .workspace {
+    grid-template-columns: minmax(0, 1fr) 330px;
+  }
+  .employee {
+    min-height: 72px;
+  }
+  td {
+    height: 72px;
+  }
+  .cell {
+    height: 66px;
+  }
+}
+@media (max-width: 1250px) {
+  .app {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+  main {
+    padding: 20px;
+  }
+  .workspace {
+    grid-template-columns: minmax(0, 1fr) 250px;
+  }
+  .view-switch {
+    width: 200px;
+  }
+  .collapsed {
+    grid-template-columns: 65px minmax(0, 1fr);
+  }
+}
+@media (max-width: 1000px) {
+  .workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .templates-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+  }
+  .templates-panel h2,
+  .templates-panel .custom-heading {
+    grid-row: 1;
+    margin: 0;
+  }
+  .templates-panel .templates {
+    grid-column: 1;
+    grid-row: 2/4;
+  }
+  .templates-panel form {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .templates-panel .table-scroll {
+    max-height: 580px;
+  }
+  .app {
+    grid-template-columns: 76px minmax(0, 1fr);
+  }
+  .sidebar {
+    padding-inline: 10px;
+  }
+  .sidebar span {
+    display: none;
+  }
+  .sidebar nav a,
+  .collapse {
+    justify-content: center;
+  }
+  .brand {
+    margin-inline: 7px;
+    font-size: 16px;
+  }
+}
+@media (max-width: 600px) {
+  .app,
+  .collapsed {
+    display: block;
+  }
+  .sidebar {
+    position: static;
+    height: 60px;
+    border-right: 0;
+    border-bottom: 1px solid #e2e3e9;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 24px;
+  }
+  .brand {
+    margin: 0;
+  }
+  .sidebar nav {
+    display: flex;
+  }
+  .sidebar nav a {
+    padding: 10px;
+  }
+  .sidebar nav a span {
+    display: block;
+    font-size: 12px;
+  }
+  .collapse {
+    display: none;
+  }
+  main {
+    padding: 16px 10px 30px;
+  }
+  .breadcrumb {
+    margin-bottom: 18px;
+    font-size: 12px;
+  }
+  .page-heading {
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-size: 25px;
+  }
+  .primary,
+  .secondary {
+    padding: 11px 10px;
+    min-height: 40px;
+    font-size: 12px;
+  }
+  .actions {
+    gap: 4px;
+  }
+  .toolbar {
+    flex-wrap: wrap;
+  }
+  .search {
+    flex-basis: 100%;
+  }
+  .view-switch {
+    width: 100%;
+  }
+  .date-toolbar {
+    margin-top: 8px;
+  }
+  .period > span {
+    min-width: 140px;
+    font-size: 11px;
+  }
+  .period {
+    gap: 0;
+  }
+  .employee-heading {
+    width: 165px !important;
+  }
+  .employee-info > span {
+    font-size: 11px;
+  }
+  .employee {
+    gap: 5px;
+    padding: 10px 4px;
+  }
+  .avatar {
+    width: 27px;
+    height: 32px;
+  }
+  .week table {
+    min-width: 730px;
+  }
+  .table-scroll {
+    max-height: 520px;
+  }
+  .templates-panel {
+    padding: 16px 12px;
+    column-gap: 12px;
+  }
+  .template {
+    padding: 10px;
+    font-size: 12px;
+  }
+  .template small {
+    font-size: 10px;
+  }
+  .template kbd {
+    display: none;
+  }
+  .apply {
+    font-size: 10px;
+  }
+  .time-fields {
+    gap: 4px;
+  }
+  .time-fields input {
+    padding: 5px;
+    font-size: 12px;
+  }
+  .calendar-panel {
+    border-radius: 12px;
+    padding: 10px 6px 0;
+  }
+  .message {
+    flex-wrap: wrap;
+  }
+}
