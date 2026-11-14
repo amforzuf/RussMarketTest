@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { createMiddleware } from "hono/factory";
 import { getCookie, setCookie } from "hono/cookie";
-import { ensureSchedule } from "../schedule/repository";
+import { ensureSchedule } from "../schedule/repository.js";
 
 export type SessionEnv = { Variables: { scheduleId: string } };
 const uuidPattern =

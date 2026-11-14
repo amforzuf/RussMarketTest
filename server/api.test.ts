@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { app } from "./app";
-import { pool } from "./db";
+import { app } from "./app.js";
+import { pool } from "./db.js";
 
 test(
   "API сохраняет смены, изолирует посетителей и защищает от конфликтов",

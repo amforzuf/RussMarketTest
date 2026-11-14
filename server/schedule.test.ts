@@ -1,7 +1,7 @@
-import { saveSchema } from "./schedule/schema";
+import { saveSchema } from "./schedule/schema.js";
 import test from "node:test";
 import assert from "node:assert/strict";
-import { duration, visibleDates, dateKey } from "../shared/schedule";
+import { duration, visibleDates, dateKey } from "../shared/schedule.js";
 
 const shift = {
   employeeId: 1,

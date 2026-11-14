@@ -1,12 +1,12 @@
-import { pool, transaction } from "../db";
+import { pool, transaction } from "../db.js";
 import type {
   Bootstrap,
   Employee,
   Schedule,
   Shift,
   Template,
-} from "../../shared/schedule";
-import { ScheduleError } from "./errors";
+} from "../../shared/schedule.js";
+import { ScheduleError } from "./errors.js";
 
 type Metadata = Pick<Schedule, "version" | "publishedAt">;
 export async function ensureSchedule(id: string) {

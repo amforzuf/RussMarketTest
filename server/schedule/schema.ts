@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { cellKey } from "../../shared/schedule";
+import { cellKey } from "../../shared/schedule.js";
 
 export const timeSchema = z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/);
 export const dateSchema = z.iso.date();

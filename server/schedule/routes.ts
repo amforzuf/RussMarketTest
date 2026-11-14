@@ -1,7 +1,7 @@
 import { Hono } from "hono";
-import type { SessionEnv } from "../middleware/session";
-import { readSchedule, writeSchedule } from "./repository";
-import { saveSchema } from "./schema";
+import type { SessionEnv } from "../middleware/session.js";
+import { readSchedule, writeSchedule } from "./repository.js";
+import { saveSchema } from "./schema.js";
 
 export const scheduleRoutes = new Hono<SessionEnv>();
 scheduleRoutes.get("/", async (context) => {

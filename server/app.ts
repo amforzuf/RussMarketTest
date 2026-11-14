@@ -1,10 +1,10 @@
 import { Hono } from "hono";
 import { bodyLimit } from "hono/body-limit";
 import { secureHeaders } from "hono/secure-headers";
-import { scheduleSession, type SessionEnv } from "./middleware/session";
-import { checkOrigin } from "./middleware/origin";
-import { scheduleRoutes } from "./schedule/routes";
-import { ScheduleError } from "./schedule/errors";
+import { scheduleSession, type SessionEnv } from "./middleware/session.js";
+import { checkOrigin } from "./middleware/origin.js";
+import { scheduleRoutes } from "./schedule/routes.js";
+import { ScheduleError } from "./schedule/errors.js";
 
 export const app = new Hono<SessionEnv>();
 app.use("*", secureHeaders());
