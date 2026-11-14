@@ -15,6 +15,7 @@
   overflow: hidden;
 }
 .toolbar {
+  min-height: 52px;
   display: flex;
   gap: 8px;
   align-items: center;
@@ -27,7 +28,7 @@
   border-radius: 10px;
   padding: 0 14px;
   height: 46px;
-  flex: 1;
+  flex: 0 1 400px;
   color: #92939e;
 }
 .search input {
@@ -44,7 +45,7 @@
   box-shadow: none;
 }
 .search:focus-within {
-  box-shadow: 0 0 0 2px #5b7dec;
+  box-shadow: 0 0 0 1px #b6b8c2;
 }
 .view-switch {
   display: flex;
@@ -71,6 +72,7 @@
   color: #72737e;
 }
 .period {
+  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -88,6 +90,7 @@
   border-radius: 6px;
 }
 .table-scroll {
+  margin-top: 24px;
   overflow: auto;
   max-height: calc(100vh - 335px);
   min-height: 320px;
@@ -225,9 +228,9 @@ td {
   color: #00a69e;
 }
 .cell.custom {
-  background: #e9edff;
+  background: #5b7dec;
   border-color: transparent;
-  color: #5b7dec;
+  color: #fff;
 }
 .cell.selected {
   background: #5b7dec;
@@ -238,6 +241,7 @@ td {
   background: #edf0ff;
   color: #5b7dec;
   border: 1px solid #5b7dec;
+  border-radius: 0;
 }
 tfoot {
   position: sticky;
@@ -276,4 +280,23 @@ tfoot td {
 }
 .month .cell {
   min-width: 40px;
+}
+
+.cell-time {
+  color: #17181c;
+  font-size: 14px;
+  white-space: nowrap;
+}
+.cell.custom .cell-time,
+.cell.selected .cell-time {
+  color: #fff;
+}
+.cell-plus {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: #fff;
+  background: #5b7dec;
 }

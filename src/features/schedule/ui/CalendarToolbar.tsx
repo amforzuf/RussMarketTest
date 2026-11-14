@@ -50,9 +50,7 @@ export function CalendarToolbar({
             </button>
           ))}
         </div>
-      </div>
-      <div className="date-toolbar">
-        <div className="period">
+        <div className="period" title={period}>
           <button
             className="icon-button"
             aria-label="Предыдущий период"
@@ -60,7 +58,7 @@ export function CalendarToolbar({
           >
             <ChevronLeft size={17} />
           </button>
-          <span>{period}</span>
+
           <button
             className="icon-button"
             aria-label="Следующий период"

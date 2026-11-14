@@ -1,13 +1,19 @@
+import { useRef } from "react";
 import { ChevronLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCalendar } from "../features/schedule/model/use-calendar";
 import { CalendarToolbar } from "../features/schedule/ui/CalendarToolbar";
 import { CalendarTable } from "../features/schedule/ui/CalendarTable";
-import { ShiftPanel } from "../features/schedule/ui/ShiftPanel";
+import {
+  ShiftPanel,
+  type ShiftPanelHandle,
+} from "../features/schedule/ui/ShiftPanel";
+import { SelectionToolbar } from "../features/schedule/ui/SelectionToolbar";
 import { ShiftMenu } from "../features/schedule/ui/ShiftMenu";
 
 export function SchedulePage() {
   const calendar = useCalendar();
+  const panel = useRef<ShiftPanelHandle>(null);
   return (
     <>
       <Link className="breadcrumb" to="/schedules">
@@ -64,14 +70,30 @@ export function SchedulePage() {
       {calendar.data && (
         <div className="workspace">
           <section className="calendar-panel" aria-label="График сотрудников">
-            <CalendarToolbar
-              query={calendar.query}
-              view={calendar.view}
-              dates={calendar.dates}
-              onQuery={calendar.setQuery}
-              onView={calendar.setView}
-              onNavigate={calendar.navigate}
-            />
+            {calendar.selected.size > 0 ? (
+              <SelectionToolbar
+                canEdit={!!calendar.selectedShift}
+                onEdit={() => {
+                  calendar.closeMenu();
+                  if (calendar.selectedShift)
+                    panel.current?.edit(calendar.selectedShift);
+                }}
+                selected={calendar.selected}
+                disabled={calendar.saving}
+                onTemplate={calendar.openTemplates}
+                onClear={calendar.clearShifts}
+                onDeselect={calendar.deselect}
+              />
+            ) : (
+              <CalendarToolbar
+                query={calendar.query}
+                view={calendar.view}
+                dates={calendar.dates}
+                onQuery={calendar.setQuery}
+                onView={calendar.setView}
+                onNavigate={calendar.navigate}
+              />
+            )}
             <CalendarTable
               dates={calendar.dates}
               employees={calendar.employees}
@@ -86,6 +108,7 @@ export function SchedulePage() {
             />
           </section>
           <ShiftPanel
+            ref={panel}
             templates={calendar.data.templates}
             hasSelection={calendar.selected.size > 0}
             saving={calendar.saving}

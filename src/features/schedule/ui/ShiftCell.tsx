@@ -6,7 +6,7 @@ import {
   type Employee,
   type Shift,
 } from "../../../../shared/schedule";
-import { fullDate, hours, type CalendarView } from "../model/format";
+import { fullDate, hours, shiftTime, type CalendarView } from "../model/format";
 
 type Props = {
   employee: Employee;
@@ -57,16 +57,20 @@ export function ShiftCell({
         onDrop={(event) => onDrop(event, key)}
       >
         {shift ? (
-          <>
+          view === "week" ? (
+            <>
+              <span className="cell-time">
+                {shiftTime(shift.start)} – {shiftTime(shift.end)}
+              </span>
+              <small>{hours(shift.start, shift.end)}</small>
+            </>
+          ) : (
             <strong>{hours(shift.start, shift.end)}</strong>
-            {view === "week" && (
-              <small>
-                {shift.start} – {shift.end}
-              </small>
-            )}
-          </>
+          )
         ) : selected ? (
-          <Plus size={18} />
+          <span className="cell-plus">
+            <Plus size={14} />
+          </span>
         ) : null}
       </button>
     </td>

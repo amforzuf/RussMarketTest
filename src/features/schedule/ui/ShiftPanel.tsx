@@ -1,32 +1,45 @@
-import { useState } from "react";
+import { useImperativeHandle, useRef, useState, type Ref } from "react";
 import { Plus } from "lucide-react";
 import type { Template } from "../../../../shared/schedule";
 import type { ShiftValue } from "../model/editor";
 import { TemplateButton } from "./TemplateButton";
 
+export type ShiftPanelHandle = { edit: (value: ShiftValue) => void };
+
 type Props = {
+  ref?: Ref<ShiftPanelHandle>;
   templates: Template[];
   hasSelection: boolean;
   saving: boolean;
   onAssign: (value: ShiftValue) => void;
 };
 export function ShiftPanel({
+  ref,
   templates,
   hasSelection,
   saving,
   onAssign,
 }: Props) {
+  const startInput = useRef<HTMLInputElement>(null);
   const [start, setStart] = useState("09:00");
   const [end, setEnd] = useState("17:00");
+  useImperativeHandle(ref, () => ({
+    edit(value) {
+      setStart(value.start);
+      setEnd(value.end);
+      startInput.current?.focus();
+      startInput.current?.scrollIntoView({ block: "nearest" });
+    },
+  }));
   return (
     <aside className="templates-panel">
       <h2>Шаблоны смен</h2>
       <div className="templates">
-        {templates.map((template, index) => (
+        {templates.map((template) => (
           <TemplateButton
             key={template.id}
             template={template}
-            index={index}
+            showShortcut
             disabled={saving}
             onAssign={onAssign}
           />
@@ -44,6 +57,7 @@ export function ShiftPanel({
             Начало
             <input
               required
+              ref={startInput}
               aria-label="Начало смены"
               type="time"
               value={start}

@@ -1,14 +1,14 @@
 import type { Template } from "../../../../shared/schedule";
 import type { ShiftValue } from "../model/editor";
-import { hours } from "../model/format";
+import { hours, templateShortcuts } from "../model/format";
 
 type Props = {
   template: Template;
-  index?: number;
+  showShortcut?: boolean;
   disabled?: boolean;
   onAssign: (value: ShiftValue) => void;
 };
-export function TemplateButton({ template, index, disabled, onAssign }: Props) {
+export function TemplateButton({ template, showShortcut, disabled, onAssign }: Props) {
   return (
     <button
       type="button"
@@ -31,7 +31,7 @@ export function TemplateButton({ template, index, disabled, onAssign }: Props) {
       }
     >
       <span>{template.name}</span>
-      {index !== undefined && <kbd>{index + 1}</kbd>}
+      {showShortcut && <kbd>{templateShortcuts[template.id]}</kbd>}
       <small>
         {template.start} – {template.end} ·{" "}
         {hours(template.start, template.end)}

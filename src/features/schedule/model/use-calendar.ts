@@ -13,7 +13,7 @@ import {
   removeShifts,
   type ShiftValue,
 } from "./editor";
-import { fullDate, type CalendarView } from "./format";
+import { fullDate, templateShortcuts, type CalendarView } from "./format";
 import { useSchedule } from "./use-schedule";
 import { useSelection } from "./use-selection";
 import type { MenuPosition } from "./format";
@@ -56,7 +56,7 @@ export function useCalendar() {
     }
     schedule.change(assignShifts(schedule.shifts, selection.selected, value));
     setError("");
-    closeMenu();
+    resetSelection();
   }
   function drop(event: DragEvent, target: string) {
     event.preventDefault();
@@ -102,8 +102,10 @@ export function useCalendar() {
           schedule.change(removeShifts(schedule.shifts, selection.selected));
           resetSelection();
         }
-      } else if (/^[1-3]$/.test(event.key) && selection.selected.size) {
-        const template = schedule.data?.templates[Number(event.key) - 1];
+      } else if (/^[124]$/.test(event.key) && selection.selected.size) {
+        const template = schedule.data?.templates.find(
+          (item) => templateShortcuts[item.id] === event.key,
+        );
         if (template) assign({ ...template, kind: template.id });
       }
     };
@@ -118,8 +120,19 @@ export function useCalendar() {
     query,
     menu,
     selected: selection.selected,
+    selectedShift: schedule.shifts.find((shift) =>
+      selection.selected.has(cellKey(shift.employeeId, shift.date)),
+    ),
     error: error || schedule.error?.message,
     closeMenu,
+    deselect: resetSelection,
+    openTemplates(event: MouseEvent<HTMLButtonElement>) {
+      openMenu(event.currentTarget.getBoundingClientRect(), "Шаблоны смен");
+    },
+    clearShifts() {
+      schedule.change(removeShifts(schedule.shifts, selection.selected));
+      closeMenu();
+    },
     assign,
     drop,
     selectCell(event: MouseEvent<HTMLButtonElement>, row: number, col: number) {
