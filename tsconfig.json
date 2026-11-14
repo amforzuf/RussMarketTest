@@ -20,6 +20,7 @@
     "shared",
     "vite.config.ts",
     "tests",
-    "playwright.config.ts"
+    "playwright.config.ts",
+    "api"
   ]
 }

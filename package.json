@@ -6,14 +6,15 @@
   "scripts": {
     "dev": "concurrently -k \"tsx watch --env-file=.env server/index.ts\" \"vite --host 127.0.0.1\"",
     "build": "tsc --noEmit && vite build",
-    "start": "tsx --env-file=.env server/index.ts",
+    "start": "node --env-file-if-exists=.env --import tsx server/index.ts",
     "test": "node --env-file-if-exists=.env --import tsx --test server/*.test.ts src/features/schedule/model/*.test.ts",
-    "db:migrate": "tsx --env-file=.env server/migrate.ts",
+    "db:migrate": "node --env-file-if-exists=.env --import tsx server/migrate.ts",
     "test:e2e": "playwright test"
   },
   "dependencies": {
     "@hono/node-server": "^2.1.8",
     "@tanstack/react-query": "^5.107.1",
+    "@vercel/functions": "^3.11.3",
     "hono": "^4.10.0",
     "lucide-react": "^0.468.0",
     "pg": "^8.16.0",

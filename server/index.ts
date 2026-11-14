@@ -1,6 +1,12 @@
+import { serveStatic } from "@hono/node-server/serve-static";
 import { serve } from "@hono/node-server";
 import { app } from "./app";
 import { pool } from "./db";
+
+app.get("/assets/*", serveStatic({ root: "./dist" }));
+for (const path of ["/", "/schedules", "/schedules/current"]) {
+  app.get(path, serveStatic({ path: "./dist/index.html" }));
+}
 
 const server = serve({
   fetch: app.fetch,

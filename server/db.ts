@@ -2,6 +2,9 @@ import pg, { type PoolClient } from "pg";
 export const pool = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
   max: 5,
+  connectionTimeoutMillis: 10000,
+  idleTimeoutMillis: 10000,
+  allowExitOnIdle: true,
 });
 
 export async function transaction<T>(

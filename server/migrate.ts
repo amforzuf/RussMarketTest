@@ -1,4 +1,9 @@
-import { pool } from "./db";
+import pg from "pg";
+
+const pool = new pg.Pool({
+  connectionString: process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL,
+  connectionTimeoutMillis: 10000,
+});
 
 const client = await pool.connect();
 try {
